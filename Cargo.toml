@@ -6,7 +6,7 @@ authors = ["inyourface3445", "inyourface3445@gmail.com"]
 description = "a simple ripgrep tool that suports regular expressions"
 license = "MIT"
 documentation = "ripgrep <filepath> <query> -c [enables case sensativity] -r [enables regex]"
-homepage = "google.com"
+homepage = "https://google.com"
 repository = "https://github.com/inyourface34456/ripgrep"
 
 [dependencies]
