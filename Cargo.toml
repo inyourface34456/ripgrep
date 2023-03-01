@@ -1,5 +1,5 @@
 [package]
-name = "ripgrep"
+name = "regexgrep"
 version = "1.0.0"
 edition = "2021"
 authors = ["inyourface3445", "inyourface3445@gmail.com"]
