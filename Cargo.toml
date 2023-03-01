@@ -1,0 +1,13 @@
+[package]
+name = "ripgrep"
+version = "1.0.0"
+edition = "2021"
+authors = ["inyourface3445", "inyourface3445@gmail.com"]
+description = "a simple ripgrep tool that suports regular expressions"
+license = "MIT"
+documentation = "ripgrep <filepath> <query> -c [enables case sensativity] -r [enables regex]"
+homepage = "google.com"
+repository = ""
+
+[dependencies]
+regex = "1.7.1"
