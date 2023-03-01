@@ -41,7 +41,7 @@ impl<'a> Config<'a> {
     pub fn parce_args(args: &'a [String]) -> Self {
         let flag = Flags::cheak_args(args);
         if args.len() <= NUM_ARGS {
-            eprintln!("There must be greater then or equal to 3 arguments.");
+            eprintln!("There must be greater then or equal to {NUM_ARGS} arguments.");
             process::exit(2)
         } else {
             Self {
