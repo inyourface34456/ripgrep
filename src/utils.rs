@@ -78,10 +78,8 @@ pub fn search<'a>(query: &str, contents: &'a str, case: bool, regep: bool) -> Ve
                 if query_.is_match(line) {
                     result.push(line);
                 }
-            } else {
-                if line.contains(query) {
+            } else if line.contains(query) {
                     result.push(line);
-                }
             }
         });
     } else {
