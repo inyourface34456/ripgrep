@@ -1,5 +1,5 @@
-use std::{fs, process};
 use regex::Regex;
+use std::{fs, process};
 
 pub struct Config<'a> {
     pub query: &'a str,
@@ -17,7 +17,7 @@ impl Flags {
     fn cheak_args(args: &[String]) -> Self {
         let mut case = false;
         let mut regep = false;
-        
+
         for i in args.iter() {
             let i = i.as_str();
             match i {
@@ -27,10 +27,7 @@ impl Flags {
             }
         }
 
-        Self {
-            case,
-            regex: regep,
-        }
+        Self { case, regex: regep }
     }
 }
 
@@ -47,7 +44,6 @@ impl<'a> Config<'a> {
             eprintln!("There must be greater then or equal to 3 arguments.");
             process::exit(2)
         } else {
-            
             Self {
                 query: &args[2],
                 file_path: &args[1],
@@ -63,16 +59,11 @@ impl<'a> Config<'a> {
             process::exit(2);
         })
     }
-
 }
-
 
 pub fn search<'a>(query: &str, contents: &'a str, case: bool, regep: bool) -> Vec<&'a str> {
     let mut result = Vec::new();
-    let mut query_ = Regex::new("").unwrap_or_else(|_| {
-        process::exit(255)
-    });
-
+    let mut query_ = Regex::new("").unwrap_or_else(|_| process::exit(255));
 
     if regep {
         query_ = Regex::new(query).unwrap_or_else(|err| {
@@ -80,7 +71,7 @@ pub fn search<'a>(query: &str, contents: &'a str, case: bool, regep: bool) -> Ve
             process::exit(17)
         });
     }
-        
+
     if !case {
         contents.lines().for_each(|line| {
             if regep {
@@ -93,7 +84,6 @@ pub fn search<'a>(query: &str, contents: &'a str, case: bool, regep: bool) -> Ve
                 }
             }
         });
-
     } else {
         contents.lines().for_each(|line| {
             if regep {
