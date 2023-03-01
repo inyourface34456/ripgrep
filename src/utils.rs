@@ -31,7 +31,6 @@ impl Flags {
     }
 }
 
-#[cfg(target_os = "linux")]
 const NUM_ARGS: usize = 3;
 
 #[cfg(target_os = "windows")]
