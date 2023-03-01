@@ -88,10 +88,8 @@ pub fn search<'a>(query: &str, contents: &'a str, case: bool, regep: bool) -> Ve
                 if query_.is_match(line) {
                     result.push(line);
                 }
-            } else {
-                if line.to_lowercase().contains(&query.to_lowercase()) {
-                    result.push(line);
-                }
+            } else if line.to_lowercase().contains(&query.to_lowercase()) {
+                result.push(line);
             }
         });
     }
