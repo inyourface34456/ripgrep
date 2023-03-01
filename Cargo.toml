@@ -7,7 +7,7 @@ description = "a simple ripgrep tool that suports regular expressions"
 license = "MIT"
 documentation = "ripgrep <filepath> <query> -c [enables case sensativity] -r [enables regex]"
 homepage = "google.com"
-repository = ""
+repository = "https://github.com/inyourface34456/ripgrep"
 
 [dependencies]
 regex = "1.7.1"
