@@ -31,10 +31,10 @@ impl Flags {
     }
 }
 
-const NUM_ARGS: usize = 3;
-
-#[cfg(target_os = "windows")]
 const NUM_ARGS: usize = 2;
+
+#[cfg(target_os = "linux")]
+const NUM_ARGS: usize = 3;
 
 impl<'a> Config<'a> {
     pub fn parce_args(args: &'a [String]) -> Self {
