@@ -15,10 +15,7 @@ mod tests {
             regex: false,
         };
 
-        assert_eq!(
-            vec!["Rust is productive"],
-            args.search()
-        );
+        assert_eq!(vec!["Rust is productive"], args.search());
     }
 
     #[test]

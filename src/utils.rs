@@ -40,7 +40,6 @@ const NUM_ARGS: usize = 2;
 #[cfg(target_os = "mac")]
 const NUM_ARGS: usize = 2;
 
-
 impl<'a> Config<'a> {
     pub fn parce_args(args: &'a [String]) -> Self {
         let flag = Flags::cheak_args(args);
@@ -69,34 +68,34 @@ impl<'a> Config<'a> {
         let mut query_ = Regex::new("").unwrap_or_else(|_| process::exit(255));
         let contents = self.read_file();
 
-    if self.regex {
-        query_ = Regex::new(self.query).unwrap_or_else(|err| {
-            println!("An error has ocurred ({})", err);
-            process::exit(17)
-        });
-    }
+        if self.regex {
+            query_ = Regex::new(self.query).unwrap_or_else(|err| {
+                println!("An error has ocurred ({})", err);
+                process::exit(17)
+            });
+        }
 
-    if !self.case {
-        contents.lines().for_each(|line| {
-            if self.regex {
-                if query_.is_match(line) {
+        if !self.case {
+            contents.lines().for_each(|line| {
+                if self.regex {
+                    if query_.is_match(line) {
+                        result.push(line.to_string());
+                    }
+                } else if line.contains(self.query) {
                     result.push(line.to_string());
                 }
-            } else if line.contains(self.query) {
-                    result.push(line.to_string());
-            }
-        });
-    } else {
-        contents.lines().for_each(|line| {
-            if self.regex {
-                if query_.is_match(line) {
+            });
+        } else {
+            contents.lines().for_each(|line| {
+                if self.regex {
+                    if query_.is_match(line) {
+                        result.push(line.to_string());
+                    }
+                } else if line.to_lowercase().contains(&self.query.to_lowercase()) {
                     result.push(line.to_string());
                 }
-            } else if line.to_lowercase().contains(&self.query.to_lowercase()) {
-                result.push(line.to_string());
-            }
-        });
-    }
-    result
+            });
+        }
+        result
     }
 }
