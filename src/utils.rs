@@ -58,6 +58,42 @@ impl<'a> Config<'a> {
             process::exit(2);
         })
     }
+
+    pub fn search(&self) -> Vec<String> {
+        let mut result = Vec::new();
+        let mut query_ = Regex::new("").unwrap_or_else(|_| process::exit(255));
+        let contents = self.read_file();
+
+    if self.regex {
+        query_ = Regex::new(self.query).unwrap_or_else(|err| {
+            println!("An error has ocurred ({})", err);
+            process::exit(17)
+        });
+    }
+
+    if !self.case {
+        contents.lines().for_each(|line| {
+            if self.regex {
+                if query_.is_match(line) {
+                    result.push(line.to_string());
+                }
+            } else if line.contains(self.query) {
+                    result.push(line.to_string());
+            }
+        });
+    } else {
+        contents.lines().for_each(|line| {
+            if self.regex {
+                if query_.is_match(line) {
+                    result.push(line.to_string());
+                }
+            } else if line.to_lowercase().contains(&self.query.to_lowercase()) {
+                result.push(line.to_string());
+            }
+        });
+    }
+    result
+    }
 }
 
 pub fn search<'a>(query: &str, contents: &'a str, case: bool, regep: bool) -> Vec<&'a str> {

@@ -14,12 +14,10 @@ mod tests {
             case: false,
             regex: false,
         };
-        let s1 = args.read_file();
-        let contents = s1.as_str();
 
         assert_eq!(
             vec!["Rust is productive"],
-            search(args.query, contents, args.case, args.regex)
+            args.search()
         );
     }
 
@@ -31,12 +29,10 @@ mod tests {
             case: true,
             regex: false,
         };
-        let s1 = args.read_file();
-        let contents = s1.as_str();
 
         assert_eq!(
             vec!["coding in rust can be fun", "Rust is productive"],
-            search(args.query, contents, args.case, args.regex)
+            args.search()
         );
     }
 
@@ -48,12 +44,10 @@ mod tests {
             case: false,
             regex: true,
         };
-        let s1 = args.read_file();
-        let contents = s1.as_str();
-
+        
         assert_eq!(
             vec!["2012-03-14", "2013-01-01", "2014-07-05"],
-            search(args.query, contents, args.case, args.regex)
+            args.search()
         );
     }
 }
