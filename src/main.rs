@@ -44,7 +44,7 @@ mod tests {
             case: false,
             regex: true,
         };
-        
+
         assert_eq!(
             vec!["2012-03-14", "2013-01-01", "2014-07-05"],
             args.search()
@@ -56,11 +56,8 @@ fn main() {
     let arg = env::args().collect::<Vec<String>>();
 
     let args = Config::parce_args(&arg);
-    let s1 = args.read_file();
-    let query = args.query;
-    let contents = s1.as_str();
 
-    let results = search(query, contents, args.case, args.regex);
+    let results = args.search();
 
     for i in results {
         println!("{i}");
