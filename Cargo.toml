@@ -1,6 +1,6 @@
 [package]
 name = "regexgrep"
-version = "1.0.2"
+version = "1.0.3"
 edition = "2021"
 authors = ["inyourface3445", "inyourface3445@gmail.com"]
 description = "a simple ripgrep tool that suports regular expressions"
